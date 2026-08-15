@@ -20,13 +20,14 @@ const times = [
 const todayISO = () => new Date().toISOString().slice(0, 10);
 
 export function Booking() {
-  const [players, setPlayers] = useState<number>(pricingPlans[0].players);
+  const fallbackPlan = pricingPlans[0]!;
+  const [players, setPlayers] = useState<number>(fallbackPlan.players);
   const [date, setDate] = useState<string>(todayISO());
   const [time, setTime] = useState<string>("");
 
   const plan = useMemo(
-    () => pricingPlans.find((p) => p.players === players) ?? pricingPlans[0],
-    [players],
+    () => pricingPlans.find((p) => p.players === players) ?? fallbackPlan,
+    [players, fallbackPlan],
   );
 
   const ready = Boolean(date && time);
