@@ -22,7 +22,7 @@ export function LocationSection() {
                 className="absolute inset-0 opacity-60"
                 style={{
                   backgroundImage:
-                    "linear-gradient(oklch(0.6 0.26 302 / 0.18) 1px, transparent 1px), linear-gradient(90deg, oklch(0.6 0.26 302 / 0.18) 1px, transparent 1px)",
+                    "linear-gradient(oklch(0.82 0.16 86 / 0.18) 1px, transparent 1px), linear-gradient(90deg, oklch(0.82 0.16 86 / 0.18) 1px, transparent 1px)",
                   backgroundSize: "48px 48px",
                 }}
               />
