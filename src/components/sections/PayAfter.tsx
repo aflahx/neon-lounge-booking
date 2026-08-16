@@ -1,11 +1,11 @@
-import { Gamepad2, Smile, Wallet, ChevronDown } from "lucide-react";
+import { DoorOpen, Gamepad2, Receipt, ChevronDown } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 
 const steps = [
-  { no: "01", label: "PLAY", icon: Gamepad2 },
-  { no: "02", label: "ENJOY", icon: Smile },
-  { no: "03", label: "PAY AFTER", icon: Wallet },
+  { no: "01", label: "WALK IN", icon: DoorOpen },
+  { no: "02", label: "GRAB A CONTROLLER", icon: Gamepad2 },
+  { no: "03", label: "SETTLE AT THE COUNTER", icon: Receipt },
 ];
 
 export function PayAfter() {
@@ -14,9 +14,10 @@ export function PayAfter() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Payment"
-          title="PLAY FIRST. PAY AFTER."
-          subtitle="No advance payment. Enjoy your gaming session and pay after you play."
+          title="NOTHING UPFRONT"
+          subtitle="Walk in, play as long as you want, and pay at the counter on your way out."
         />
+
 
         <div className="mt-12 flex flex-col items-stretch gap-3 md:flex-row md:items-center md:justify-center">
           {steps.map((step, i) => (
