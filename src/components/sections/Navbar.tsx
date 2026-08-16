@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { site } from "@/data/site";
+import logo from "@/assets/blackout-logo.png.asset.json";
 
 const links = [
   { label: "Home", href: "#home" },
