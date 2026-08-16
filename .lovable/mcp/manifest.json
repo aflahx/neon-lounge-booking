@@ -26,7 +26,50 @@
           "type": "object",
           "properties": {}
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "tagline": {
+              "type": "string"
+            },
+            "city": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            },
+            "hours": {
+              "type": "string"
+            },
+            "phone": {
+              "type": "string"
+            },
+            "whatsapp": {
+              "type": "string"
+            },
+            "instagram": {
+              "type": "string"
+            },
+            "maps": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "tagline",
+            "city",
+            "address",
+            "hours",
+            "phone",
+            "whatsapp",
+            "instagram",
+            "maps"
+          ]
+        }
       },
       {
         "name": "get_pricing",
@@ -42,7 +85,79 @@
           "type": "object",
           "properties": {}
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "currency": {
+              "type": "string"
+            },
+            "footnote": {
+              "type": "string"
+            },
+            "plans": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "players": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "originalPrice": {
+                    "anyOf": [
+                      {
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "unit": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "note": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "title",
+                  "players",
+                  "price",
+                  "originalPrice",
+                  "unit",
+                  "label",
+                  "note"
+                ]
+              }
+            }
+          },
+          "required": [
+            "currency",
+            "footnote",
+            "plans"
+          ]
+        }
       },
       {
         "name": "list_events",
@@ -58,7 +173,33 @@
           "type": "object",
           "properties": {}
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "events": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "title",
+                  "description"
+                ]
+              }
+            }
+          },
+          "required": [
+            "events"
+          ]
+        }
       },
       {
         "name": "build_booking_request",
@@ -95,7 +236,42 @@
             "time"
           ]
         },
-        "outputSchema": null
+        "outputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "players": {
+              "type": "number"
+            },
+            "date": {
+              "type": "string"
+            },
+            "time": {
+              "type": "string"
+            },
+            "plan": {
+              "type": "string"
+            },
+            "ratePerHour": {
+              "type": "number"
+            },
+            "whatsappUrl": {
+              "type": "string"
+            },
+            "note": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "players",
+            "date",
+            "time",
+            "plan",
+            "ratePerHour",
+            "whatsappUrl",
+            "note"
+          ]
+        }
       }
     ]
   }

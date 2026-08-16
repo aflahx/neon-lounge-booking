@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 import { pricingFootnote, pricingPlans } from "@/data/site";
 
 export default defineTool({
@@ -7,6 +8,22 @@ export default defineTool({
   description:
     "Get the current hourly gaming rates for single, duo and squad sessions at Blackout Gaming Cafe.",
   inputSchema: {},
+  outputSchema: {
+    currency: z.string(),
+    footnote: z.string(),
+    plans: z.array(
+      z.object({
+        id: z.string(),
+        title: z.string(),
+        players: z.number(),
+        price: z.number(),
+        originalPrice: z.number().nullable(),
+        unit: z.string(),
+        label: z.string(),
+        note: z.string().nullable(),
+      }),
+    ),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
     const payload = {

@@ -1,4 +1,5 @@
 import { defineTool } from "@lovable.dev/mcp-js";
+import { z } from "zod";
 import { site } from "@/data/site";
 
 export default defineTool({
@@ -7,6 +8,17 @@ export default defineTool({
   description:
     "Get Blackout Gaming Cafe's location, opening hours, phone, WhatsApp and Instagram details.",
   inputSchema: {},
+  outputSchema: {
+    name: z.string(),
+    tagline: z.string(),
+    city: z.string(),
+    address: z.string(),
+    hours: z.string(),
+    phone: z.string(),
+    whatsapp: z.string(),
+    instagram: z.string(),
+    maps: z.string(),
+  },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: () => {
     const info = {

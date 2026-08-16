@@ -12,6 +12,15 @@ export default defineTool({
     date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Use YYYY-MM-DD").describe("Session date."),
     time: z.string().min(1).describe("Preferred start time, e.g. '07:00 PM'."),
   },
+  outputSchema: {
+    players: z.number(),
+    date: z.string(),
+    time: z.string(),
+    plan: z.string(),
+    ratePerHour: z.number(),
+    whatsappUrl: z.string(),
+    note: z.string(),
+  },
   annotations: { readOnlyHint: true, openWorldHint: false },
   handler: ({ players, date, time }) => {
     const plan =
