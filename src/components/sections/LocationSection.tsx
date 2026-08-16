@@ -17,33 +17,26 @@ export function LocationSection() {
         <div className="mt-12 grid gap-5 lg:grid-cols-2">
           <Reveal>
             <div className="glass relative h-72 overflow-hidden rounded-2xl sm:h-full sm:min-h-80">
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-60"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(oklch(0.6 0.26 302 / 0.18) 1px, transparent 1px), linear-gradient(90deg, oklch(0.6 0.26 302 / 0.18) 1px, transparent 1px)",
-                  backgroundSize: "48px 48px",
-                }}
+              <iframe
+                title={`Satellite map showing ${site.name}`}
+                src={site.mapEmbedUrl}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 h-full w-full border-0"
               />
               <div
                 aria-hidden
-                className="absolute top-1/2 left-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-[70px]"
+                className="pointer-events-none absolute inset-0 ring-1 ring-primary/25 ring-inset"
               />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-                <MapPin
-                  size={44}
-                  className="mx-auto text-primary-glow"
-                  aria-hidden
-                  style={{ animation: "floatY 4s ease-in-out infinite" }}
-                />
-                <p className="mt-3 font-display text-sm font-bold tracking-[0.25em] neon-text">
-                  BLACKOUT
-                </p>
-                <p className="mt-1 text-xs text-muted-foreground">{site.shortAddress}</p>
+              <div className="pointer-events-none absolute bottom-3 left-3 flex items-center gap-2 rounded-lg bg-background/80 px-3 py-2 backdrop-blur-md">
+                <MapPin size={16} className="text-primary-glow" aria-hidden />
+                <span className="font-display text-[0.65rem] font-bold tracking-[0.22em]">
+                  SATELLITE VIEW · {site.shortAddress.toUpperCase()}
+                </span>
               </div>
             </div>
           </Reveal>
+
 
           <Reveal delay={120}>
             <div className="glass flex h-full flex-col justify-center gap-6 rounded-2xl p-7 sm:p-9">

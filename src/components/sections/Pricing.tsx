@@ -20,20 +20,11 @@ export function Pricing() {
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
           {pricingPlans.map((plan, i) => (
             <Reveal key={plan.id} delay={i * 100}>
-              <article
-                className={`glass neon-hover relative flex h-full flex-col rounded-2xl p-7 ${
-                  plan.featured ? "neon-ring border-primary/50" : ""
-                }`}
-              >
-                <span
-                  className={`inline-flex w-fit rounded-full px-3 py-1 text-[0.6rem] font-bold tracking-[0.2em] uppercase ${
-                    plan.featured
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-primary/12 text-primary-glow"
-                  }`}
-                >
+              <article className="glass neon-hover group relative flex h-full flex-col rounded-2xl p-7 transition-all duration-300 focus-within:border-primary/60 hover:border-primary/60">
+                <span className="inline-flex w-fit rounded-full bg-primary/12 px-3 py-1 text-[0.6rem] font-bold tracking-[0.2em] text-primary-glow uppercase transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                   {plan.label}
                 </span>
+
 
                 <h3 className="mt-5 text-lg font-bold tracking-[0.15em] uppercase">{plan.title}</h3>
 
@@ -59,13 +50,10 @@ export function Pricing() {
                   </p>
                 ) : null}
 
-                <NeonLink
-                  href="#booking"
-                  variant={plan.featured ? "primary" : "outline"}
-                  className="mt-7 w-full"
-                >
+                <NeonLink href="#booking" variant="outline" className="mt-7 w-full">
                   Book now
                 </NeonLink>
+
               </article>
             </Reveal>
           ))}

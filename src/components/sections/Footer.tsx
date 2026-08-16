@@ -1,4 +1,6 @@
 import { site, whatsappLink } from "@/data/site";
+import logo from "@/assets/blackout-logo.png.asset.json";
+
 
 const links = [
   { label: "Home", href: "#home" },
@@ -14,10 +16,19 @@ export function Footer() {
     <footer className="relative border-t border-border pt-16 pb-28 sm:pb-16">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-3">
         <div>
+          <img
+            src={logo.url}
+            alt="Blackout Gaming Cafe logo"
+            width={96}
+            height={96}
+            loading="lazy"
+            className="mb-4 h-16 w-16 object-contain"
+          />
           <p className="font-display text-xl font-bold tracking-[0.28em] neon-text">
             {site.shortName}
           </p>
           <p className="mt-1 text-sm text-muted-foreground">Gaming Cafe · {site.city}</p>
+
           <p className="mt-4 text-xs font-semibold tracking-[0.28em] text-primary-glow uppercase">
             {site.tagline}
           </p>
