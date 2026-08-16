@@ -50,13 +50,10 @@ export function Pricing() {
                   </p>
                 ) : null}
 
-                <NeonLink
-                  href="#booking"
-                  variant={plan.featured ? "primary" : "outline"}
-                  className="mt-7 w-full"
-                >
+                <NeonLink href="#booking" variant="outline" className="mt-7 w-full">
                   Book now
                 </NeonLink>
+
               </article>
             </Reveal>
           ))}
