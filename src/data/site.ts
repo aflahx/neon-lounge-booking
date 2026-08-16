@@ -19,6 +19,10 @@ export const site = {
   // Replace with the exact verified Google Maps place URL once confirmed.
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Blackout+Gaming+Cafe+Lisie+Hospital+Road+Kochi",
+  // Satellite (t=k) embed. Swap the q= value for exact coordinates once confirmed.
+  mapEmbedUrl:
+    "https://maps.google.com/maps?q=Blackout%20Gaming%20Cafe%20Lisie%20Hospital%20Road%20Kochi&t=k&z=17&ie=UTF8&iwloc=&output=embed",
+
 } as const;
 
 export const whatsappLink = (message: string) =>
