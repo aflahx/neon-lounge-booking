@@ -1,4 +1,6 @@
 import { site, whatsappLink } from "@/data/site";
+import logo from "@/assets/blackout-logo.png.asset.json";
+
 
 const links = [
   { label: "Home", href: "#home" },
