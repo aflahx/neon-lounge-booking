@@ -34,12 +34,19 @@ export function Navbar() {
         aria-label="Main"
         className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6"
       >
-        <a
-          href="#home"
-          className="font-display text-lg font-bold tracking-[0.3em] text-foreground neon-text"
-        >
-          {site.shortName}
+        <a href="#home" className="flex items-center gap-2.5">
+          <img
+            src={logo.url}
+            alt="Blackout Gaming Cafe logo"
+            width={40}
+            height={40}
+            className="h-9 w-9 object-contain"
+          />
+          <span className="font-display text-lg font-bold tracking-[0.3em] text-foreground neon-text">
+            {site.shortName}
+          </span>
         </a>
+
 
         <ul className="hidden items-center gap-7 lg:flex">
           {links.map((link) => (
