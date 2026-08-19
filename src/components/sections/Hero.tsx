@@ -2,6 +2,8 @@ import { Clock } from "lucide-react";
 import heroImage from "@/assets/hero-lounge.jpg";
 import { site } from "@/data/site";
 import { NeonLink } from "@/components/NeonButton";
+import { FloatingController } from "@/components/FloatingController";
+
 
 export function Hero() {
   return (

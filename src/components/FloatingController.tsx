@@ -32,27 +32,31 @@ export function FloatingController({ className = "" }: { className?: string }) {
       className={`pointer-events-none select-none ${className}`}
       style={{ perspective: "1100px" }}
     >
-      <div
-        className="controller-orbit"
-        style={{
-          transform: `rotateY(${tilt.x * 26}deg) rotateX(${-tilt.y * 20}deg)`,
-          transformStyle: "preserve-3d",
-          transition: "transform 400ms cubic-bezier(0.22, 1, 0.36, 1)",
-        }}
-      >
+      <div className="controller-orbit">
         <div
-          aria-hidden
-          className="glow-pulse absolute top-1/2 left-1/2 h-3/5 w-3/5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-[90px]"
-        />
-        <img
-          src={controller}
-          alt=""
-          width={1024}
-          height={1024}
-          loading="lazy"
-          className="controller-bob relative h-full w-full object-contain drop-shadow-[0_40px_60px_oklch(0_0_0/0.7)]"
-        />
+          style={{
+            height: "100%",
+            width: "100%",
+            transform: `rotateY(${tilt.x * 26}deg) rotateX(${-tilt.y * 20}deg)`,
+            transformStyle: "preserve-3d",
+            transition: "transform 400ms cubic-bezier(0.22, 1, 0.36, 1)",
+          }}
+        >
+          <div
+            aria-hidden
+            className="glow-pulse absolute top-1/2 left-1/2 h-3/5 w-3/5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-[90px]"
+          />
+          <img
+            src={controller}
+            alt=""
+            width={1024}
+            height={1024}
+            loading="lazy"
+            className="controller-bob relative h-full w-full object-contain drop-shadow-[0_40px_60px_oklch(0_0_0/0.7)]"
+          />
+        </div>
       </div>
+
     </div>
   );
 }
