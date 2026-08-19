@@ -14,7 +14,9 @@ import { InstagramSection } from "@/components/sections/InstagramSection";
 import { GameNights } from "@/components/sections/GameNights";
 import { Footer } from "@/components/sections/Footer";
 import { FloatingActions } from "@/components/sections/FloatingActions";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import { site } from "@/data/site";
+
 
 const title = "Blackout Gaming Cafe Kochi | PS5 Gaming & Multiplayer";
 const description =
@@ -60,8 +62,10 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="relative min-h-screen bg-background">
+      <LoadingScreen />
       <Navbar />
       <main>
+
         <Hero />
         <Experience />
         <Pricing />

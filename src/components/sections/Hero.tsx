@@ -2,6 +2,8 @@ import { Clock } from "lucide-react";
 import heroImage from "@/assets/hero-lounge.jpg";
 import { site } from "@/data/site";
 import { NeonLink } from "@/components/NeonButton";
+import { FloatingController } from "@/components/FloatingController";
+
 
 export function Hero() {
   return (
@@ -24,7 +26,10 @@ export function Hero() {
         className="ambient-drift absolute -top-40 -left-32 -z-10 h-[38rem] w-[38rem] rounded-full bg-primary/25 blur-[140px]"
       />
 
+      <FloatingController className="absolute top-24 right-[-14%] -z-10 h-56 w-56 opacity-70 sm:top-1/2 sm:right-[4%] sm:h-[22rem] sm:w-[22rem] sm:-translate-y-1/2 sm:opacity-100 lg:h-[30rem] lg:w-[30rem]" />
+
       <div className="mx-auto w-full max-w-7xl px-4 pt-28 pb-24 sm:px-6">
+
         <div className="max-w-2xl">
           <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-1.5 text-[0.65rem] font-semibold tracking-[0.22em] text-primary-glow uppercase">
             <Clock size={13} aria-hidden /> {site.hoursShort}
