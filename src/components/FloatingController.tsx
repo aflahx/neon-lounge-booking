@@ -10,21 +10,35 @@ export function FloatingController({ className = "" }: { className?: string }) {
   const frame = useRef<number | null>(null);
 
   useEffect(() => {
-    const onMove = (e: PointerEvent) => {
+    const update = (clientX: number, clientY: number) => {
       if (frame.current !== null) return;
       frame.current = requestAnimationFrame(() => {
         frame.current = null;
-        const nx = e.clientX / window.innerWidth - 0.5;
-        const ny = e.clientY / window.innerHeight - 0.5;
+        const nx = clientX / window.innerWidth - 0.5;
+        const ny = clientY / window.innerHeight - 0.5;
         setTilt({ x: nx, y: ny });
       });
     };
-    window.addEventListener("pointermove", onMove, { passive: true });
+
+    const onPointer = (e: PointerEvent) => update(e.clientX, e.clientY);
+    const onTouch = (e: TouchEvent) => {
+      const t = e.touches[0] ?? e.changedTouches[0];
+      if (t) update(t.clientX, t.clientY);
+    };
+
+    window.addEventListener("pointermove", onPointer, { passive: true });
+    window.addEventListener("pointerdown", onPointer, { passive: true });
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("touchmove", onTouch, { passive: true });
     return () => {
-      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointermove", onPointer);
+      window.removeEventListener("pointerdown", onPointer);
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("touchmove", onTouch);
       if (frame.current !== null) cancelAnimationFrame(frame.current);
     };
   }, []);
+
 
   return (
     <div
