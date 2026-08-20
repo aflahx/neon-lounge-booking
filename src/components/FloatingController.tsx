@@ -51,7 +51,6 @@ export function FloatingController({ className = "" }: { className?: string }) {
 
   return (
     <div
-      ref={wrapperRef}
       aria-hidden
       onPointerMove={handleWrapperPointer}
       onPointerDown={handleWrapperPointer}
