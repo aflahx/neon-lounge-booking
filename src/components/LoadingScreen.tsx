@@ -12,9 +12,13 @@ const DURATION = 2400;
 
 export function LoadingScreen() {
   const [progress, setProgress] = useState(0);
-  const [tip] = useState(() => tips[Math.floor(Math.random() * tips.length)]);
+  const [tip, setTip] = useState(tips[0]);
   const [done, setDone] = useState(false);
   const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    setTip(tips[Math.floor(Math.random() * tips.length)]);
+  }, []);
 
   useEffect(() => {
     const start = performance.now();
