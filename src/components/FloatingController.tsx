@@ -8,7 +8,7 @@ import controller from "@/assets/controller-3d.png";
 export function FloatingController({ className = "" }: { className?: string }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const frame = useRef<number | null>(null);
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  
 
   const update = (clientX: number, clientY: number) => {
     if (frame.current !== null) return;
