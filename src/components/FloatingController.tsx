@@ -8,18 +8,19 @@ import controller from "@/assets/controller-3d.png";
 export function FloatingController({ className = "" }: { className?: string }) {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const frame = useRef<number | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+
+  const update = (clientX: number, clientY: number) => {
+    if (frame.current !== null) return;
+    frame.current = requestAnimationFrame(() => {
+      frame.current = null;
+      const nx = clientX / window.innerWidth - 0.5;
+      const ny = clientY / window.innerHeight - 0.5;
+      setTilt({ x: nx, y: ny });
+    });
+  };
 
   useEffect(() => {
-    const update = (clientX: number, clientY: number) => {
-      if (frame.current !== null) return;
-      frame.current = requestAnimationFrame(() => {
-        frame.current = null;
-        const nx = clientX / window.innerWidth - 0.5;
-        const ny = clientY / window.innerHeight - 0.5;
-        setTilt({ x: nx, y: ny });
-      });
-    };
-
     const onPointer = (e: PointerEvent) => update(e.clientX, e.clientY);
     const onTouch = (e: TouchEvent) => {
       const t = e.touches[0] ?? e.changedTouches[0];
@@ -39,12 +40,25 @@ export function FloatingController({ className = "" }: { className?: string }) {
     };
   }, []);
 
+  const handleWrapperPointer = (e: React.PointerEvent<HTMLDivElement>) => {
+    update(e.clientX, e.clientY);
+  };
+
+  const handleWrapperTouch = (e: React.TouchEvent<HTMLDivElement>) => {
+    const t = e.touches[0] ?? e.changedTouches[0];
+    if (t) update(t.clientX, t.clientY);
+  };
 
   return (
     <div
+      ref={wrapperRef}
       aria-hidden
-      className={`pointer-events-none select-none ${className}`}
-      style={{ perspective: "1100px" }}
+      onPointerMove={handleWrapperPointer}
+      onPointerDown={handleWrapperPointer}
+      onTouchMove={handleWrapperTouch}
+      onTouchStart={handleWrapperTouch}
+      className={`select-none ${className}`}
+      style={{ perspective: "1100px", touchAction: "none" }}
     >
       <div className="controller-orbit">
         <div
@@ -66,11 +80,12 @@ export function FloatingController({ className = "" }: { className?: string }) {
             width={1024}
             height={1024}
             loading="lazy"
-            className="controller-bob relative h-full w-full object-contain drop-shadow-[0_40px_60px_oklch(0_0_0/0.7)]"
+            draggable={false}
+            className="controller-bob h-full w-full object-contain drop-shadow-[0_40px_60px_oklch(0_0_0/0.7)]"
           />
         </div>
       </div>
-
     </div>
   );
 }
+
